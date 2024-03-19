@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import TodoList from './components/TodoList';
+import AddTodoForm from './components/AddTodoForm';
+import AddTaskUseCase from './useCases/AddTaskUseCase';
+import TaskRepository from './domain/TaskRepository';
+const taskRepository = new TaskRepository();
+const addTaskUseCase = new AddTaskUseCase(taskRepository);
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Todo List App</h1>
+      <AddTodoForm />
+      <TodoList />
     </div>
   );
 }
