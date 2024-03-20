@@ -1,17 +1,15 @@
 import React from 'react';
-import TodoList from './components/TodoList';
-import AddTodoForm from './components/AddTodoForm';
-import AddTaskUseCase from './useCases/AddTaskUseCase';
-import TaskRepository from './domain/TaskRepository';
-const taskRepository = new TaskRepository();
-const addTaskUseCase = new AddTaskUseCase(taskRepository);
+import { Provider } from 'react-redux';
+import store from './app/redux/store';
+import HomePage from './app/pages/HomePage';
+
 function App() {
   return (
-    <div>
-      <h1>Todo List App</h1>
-      <AddTodoForm />
-      <TodoList />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <HomePage />
+      </div>
+    </Provider>
   );
 }
 
